@@ -37,7 +37,7 @@
                         name="web_ribbon"
                         title="Archived"
                         bg_color="bg-danger"
-                        attrs="{'invisible': [('active', '=', True)]}"
+                        invisible="active"
                     />
                     <div class="oe_button_box" name="button_box">
                     </div>
@@ -63,7 +63,7 @@
                             <field name="closed" />
                             <field
                                 name="close_from_portal"
-                                attrs="{'invisible': [('closed', '=', False)]}"
+                                invisible="not closed"
                             />
                             <field name="unattended" />
                         </group>

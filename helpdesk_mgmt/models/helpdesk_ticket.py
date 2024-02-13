@@ -118,11 +118,10 @@ class HelpdeskTicket(models.Model):
     )
     active = fields.Boolean(default=True)
 
-    def name_get(self):
-        res = []
+    @api.depends("number", "name")
+    def _compute_display_name(self):
         for rec in self:
-            res.append((rec.id, rec.number + " - " + rec.name))
-        return res
+            rec.display_name = rec.number + " - " + rec.name
 
     def assign_to_me(self):
         self.write({"user_id": self.env.user.id})
